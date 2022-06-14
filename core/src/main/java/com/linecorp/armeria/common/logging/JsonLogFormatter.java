@@ -215,7 +215,8 @@ final class JsonLogFormatter implements LogFormatter {
 
             if (sanitizedContent != null) {
                 gen.writeStringField("content", sanitizedContent);
-            } else if (log.responseContentPreview() != null) {
+            } else if (availableProperties.contains(RequestLogProperty.RESPONSE_CONTENT_PREVIEW) &&
+                       log.responseContentPreview() != null) {
                 gen.writeStringField("contentPreview", log.responseContentPreview());
             }
 
